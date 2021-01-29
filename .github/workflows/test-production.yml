@@ -1,0 +1,16 @@
+name: Test Production
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Start xcodebuild test
+        run: |
+          fastlane test_production

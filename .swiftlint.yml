@@ -1,0 +1,10 @@
+excluded:
+  - Pods
+disabled_rules:
+  - trailing_whitespace
+  - identifier_name
+line_length: 150
+force_cast: error
+force_try:
+  severity: error
+warning_threshold: 1

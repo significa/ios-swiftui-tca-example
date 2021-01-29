@@ -1,0 +1,53 @@
+--allman false
+--beforemarks 
+--binarygrouping none
+--categorymark "MARK: %c"
+--classthreshold 0
+--closingparen balanced
+--commas inline
+--conflictmarkers reject
+--decimalgrouping none
+--elseposition same-line
+--enumthreshold 0
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--fragment false
+--funcattributes preserve
+--guardelse auto
+--header ignore
+--hexgrouping none
+--hexliteralcase uppercase
+--ifdef indent
+--importgrouping alphabetized
+--indent 2
+--indentcase false
+--lifecycle 
+--linebreaks lf
+--maxwidth none
+--modifierorder 
+--nospaceoperators 
+--nowrapoperators 
+--octalgrouping none
+--operatorfunc spaced
+--patternlet inline
+--ranges spaced
+--self init-only
+--semicolons never
+--shortoptionals always
+--smarttabs enabled
+--stripunusedargs closure-only
+--structthreshold 0
+--tabwidth unspecified
+--trailingclosures 
+--trimwhitespace always
+--typeattributes preserve
+--varattributes preserve
+--voidtype void
+--wraparguments preserve
+--wrapcollections before-first
+--wrapparameters before-first
+--xcodeindentation disabled
+--yodaswap always
+--disable blankLinesBetweenScopes
+--disable wrapMultilineStatementBraces

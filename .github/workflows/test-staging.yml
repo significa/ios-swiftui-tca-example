@@ -1,0 +1,16 @@
+name: Test Staging
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Start xcodebuild test
+        run: |
+          fastlane test_staging

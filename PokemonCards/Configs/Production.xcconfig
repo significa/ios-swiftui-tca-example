@@ -1,0 +1,9 @@
+// Production.xcconfig
+
+// Server URL
+API_URL = api.pokemontcg.io
+API_VERSION = v1
+
+// App Settings
+APP_NAME = PokemonCards
+APP_BUNDLE_ID = coletiv.ios.template
