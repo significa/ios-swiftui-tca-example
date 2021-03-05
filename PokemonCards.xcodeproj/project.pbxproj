@@ -238,11 +238,10 @@
 			isa = PBXGroup;
 			children = (
 				1004FECF2579578E008A6797 /* Localization */,
-				10D3D0852577B5DA0025C730 /* Design System */,
 				10F6F4F425710773001851A5 /* Utility */,
 				10E37998256FFDBD00B2CFBE /* Data */,
+				10D3D0852577B5DA0025C730 /* Design System */,
 				10E37999256FFDF600B2CFBE /* Application */,
-				10E379B4257003F400B2CFBE /* Configs */,
 				10CD45E823C4EA5C00E0D0D4 /* Resources */,
 			);
 			path = PokemonCards;
@@ -259,6 +258,7 @@
 		10CD45E823C4EA5C00E0D0D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				10E379B4257003F400B2CFBE /* Configs */,
 				1004FEE52579593D008A6797 /* Localization */,
 				10CD45BF23C4E58700E0D0D4 /* Preview Content */,
 				10CD45BD23C4E58700E0D0D4 /* Assets.xcassets */,
@@ -376,7 +376,6 @@
 			children = (
 				10E379B62570049A00B2CFBE /* Staging.xcconfig */,
 				10E379B52570040B00B2CFBE /* Production.xcconfig */,
-				10E379E1257007A200B2CFBE /* Environment.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -402,6 +401,7 @@
 		10F6F4F425710773001851A5 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				10E379E1257007A200B2CFBE /* Environment.swift */,
 				10F6F4F525710784001851A5 /* Error+Equality.swift */,
 				108C413D2583D5C100615793 /* UUID+Increment.swift */,
 			);
