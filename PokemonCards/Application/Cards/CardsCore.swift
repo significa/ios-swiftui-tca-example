@@ -115,21 +115,20 @@ let cardsReducer =
           .cancellable(id: CardsCancelId())
 
       case .cardsResponse(.success(let cards)):
-        let cardItems = IdentifiedArrayOf<CardDetailState>(
-          cards.cards.map {
-            CardDetailState(
-              id: environment.uuid(),
-              card: $0
-            )
-          }
-        )
-        state.cards.append(contentsOf: cardItems)
+        cards.cards.forEach {
+          state.cards.append(CardDetailState(
+            id: environment.uuid(),
+            card: $0
+          ))
+        }
+
         return .concatenate(
           .init(value: .loadingActive(false)),
           .init(value: .loadingPageActive(false))
         )
 
       case .cardsResponse(.failure(let error)):
+        print(error)
         return .concatenate(
           .init(value: .loadingActive(false)),
           .init(value: .loadingPageActive(false))

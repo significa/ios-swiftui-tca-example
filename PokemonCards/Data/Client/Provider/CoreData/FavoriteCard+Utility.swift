@@ -14,8 +14,8 @@ extension FavoriteCard {
     newFavorite.id = card.id
     newFavorite.name = card.name
     newFavorite.hp = card.hp
-    newFavorite.imageURL = card.imageURLString
-    newFavorite.imageHDURL = card.imageHDURLString
+    newFavorite.imageURL = card.images.smallURLString
+    newFavorite.imageHDURL = card.images.largeURLString
 
     return newFavorite
   }

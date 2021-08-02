@@ -13,23 +13,7 @@ struct Card: Codable, Equatable, Identifiable {
   var name: String
   var hp: String?
 
-  var imageURLString: String
-  var imageURL: URL? {
-    return URL(string: imageURLString)
-  }
-
-  var imageHDURLString: String
-  var imageHDURL: URL? {
-    return URL(string: imageHDURLString)
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case id
-    case name
-    case hp
-    case imageURLString = "imageUrl"
-    case imageHDURLString = "imageUrlHiRes"
-  }
+  var images: Images
 
   init(
     id: String,
@@ -41,8 +25,25 @@ struct Card: Codable, Equatable, Identifiable {
     self.id = id
     self.name = name
     self.hp = hp
-    self.imageURLString = imageURLString
-    self.imageHDURLString = imageHDURLString
+    self.images = Images(smallURLString: imageURLString,
+                         largeURLString: imageHDURLString)
+  }
+}
+
+struct Images: Codable, Equatable {
+  var smallURLString: String
+  var smallURL: URL? {
+    URL(string: smallURLString)
+  }
+
+  var largeURLString: String
+  var largeURL: URL? {
+    URL(string: smallURLString)
+  }
+
+  enum CodingKeys: String, CodingKey {
+    case smallURLString = "small"
+    case largeURLString = "large"
   }
 }
 
@@ -53,8 +54,8 @@ extension Card {
     self.id = favorite.id ?? ""
     self.name = favorite.name ?? ""
     self.hp = favorite.hp
-    self.imageURLString = favorite.imageURL ?? ""
-    self.imageHDURLString = favorite.imageHDURL ?? ""
+    self.images = Images(smallURLString: favorite.imageURL ?? "",
+                         largeURLString: favorite.imageHDURL ?? "")
   }
 }
 
@@ -89,7 +90,7 @@ struct Cards: Codable, Equatable, Identifiable {
   var cards: [Card]
 
   enum CodingKeys: String, CodingKey {
-    case cards
+    case cards = "data"
   }
 }
 

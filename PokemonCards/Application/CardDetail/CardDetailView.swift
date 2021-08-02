@@ -16,7 +16,7 @@ struct CardDetailView: View {
   var body: some View {
     WithViewStore(store) { viewStore in
       VStack {
-        KFImage(viewStore.card.imageHDURL)
+        KFImage(viewStore.card.images.smallURL)
           .placeholder {
             ActivityIndicator(
               style: .large,

@@ -66,7 +66,7 @@ let mainReducer: Reducer<MainState, MainAction, MainEnvironment> = .combine(
     // Update favorites on Cards State
     case .cards(.card(id: _, action: .toggleFavoriteResponse(.success(let favorites)))):
       state.favoritesState.cards = .init(
-        favorites.map {
+        uniqueElements: favorites.map {
           CardDetailState(
             id: environment.uuid(),
             card: $0

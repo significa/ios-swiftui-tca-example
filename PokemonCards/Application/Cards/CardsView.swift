@@ -109,7 +109,7 @@ struct CardsView_Previews: PreviewProvider {
         store: .init(
           initialState: .init(
             cards: .init(
-              Cards.mock.cards.map {
+              uniqueElements: Cards.mock.cards.map {
                 CardDetailState(
                   id: .init(),
                   card: $0

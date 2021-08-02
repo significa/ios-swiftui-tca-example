@@ -18,6 +18,7 @@ public enum Environment {
   enum ConfigKey {
     static let apiURL = "API_URL"
     static let apiVersion = "API_VERSION"
+    static let apiKey = "API_KEY"
   }
 
   // MARK: Plist
@@ -47,5 +48,13 @@ public enum Environment {
     }
 
     return apiVersion
+  }()
+
+  static let apiKey: String = {
+    guard let apiKey = Environment.infoDictionary[ConfigKey.apiKey] as? String else {
+      fatalError("API Key not set in plist for this environment")
+    }
+
+    return apiKey
   }()
 }
