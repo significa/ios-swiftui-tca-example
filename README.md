@@ -1,7 +1,6 @@
 # PokemonCards - SwiftUI + Composable Architecture Example 
 
-This repository has a small example using the [swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture) and the [Pokemon TGC API](https://pokemontcg.io)
-This small example also inspired [This](https://github.com/pointfreeco/swift-composable-architecture) Coletiv Blog post 
+This repository has a small example using the [swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture) and the [Pokemon TGC API](https://pokemontcg.io). This also inspired [this](https://github.com/pointfreeco/swift-composable-architecture) Coletiv Blog post 
 
 ## 🚧 Dependencies
 
