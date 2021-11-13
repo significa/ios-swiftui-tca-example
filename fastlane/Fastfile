@@ -20,7 +20,7 @@ platform :ios do
   lane :test_staging do
     scan(
       project: "PokemonCards.xcodeproj",
-      devices: ["iPhone 12 Pro Max"],
+      devices: ["iPhone 13"],
       scheme: "Staging"
     )
   end
@@ -29,7 +29,7 @@ platform :ios do
   lane :test_production do
     scan(
       project: "PokemonCards.xcodeproj",
-      devices: ["iPhone 12 Pro Max"],
+      devices: ["iPhone 13"],
       scheme: "Production"
     )
   end
