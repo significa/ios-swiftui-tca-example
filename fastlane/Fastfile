@@ -31,7 +31,8 @@ platform :ios do
       project: "PokemonCards.xcodeproj",
       devices: ["iPhone 13"],
       scheme: "Production",
-      output_directory: "test-output"
+      output_directory: "test-output",
+      include_simulator_logs: true
     )
   end
 end
