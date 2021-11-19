@@ -14,3 +14,9 @@ jobs:
       - name: Start xcodebuild test
         run: |
           fastlane test_production
+          
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test-output
