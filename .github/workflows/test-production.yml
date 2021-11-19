@@ -20,4 +20,6 @@ jobs:
         if: failure()
         with:
           name: test-results
-          path: test-output
+          path: | 
+            test-output
+            SnapShot
