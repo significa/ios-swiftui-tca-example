@@ -17,6 +17,7 @@ jobs:
           
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
+        if: failure()
         with:
           name: test-results
           path: test-output
