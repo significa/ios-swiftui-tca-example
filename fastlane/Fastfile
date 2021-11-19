@@ -30,7 +30,8 @@ platform :ios do
     scan(
       project: "PokemonCards.xcodeproj",
       devices: ["iPhone 13"],
-      scheme: "Production"
+      scheme: "Production",
+      output_directory: "test-output"
     )
   end
 end
