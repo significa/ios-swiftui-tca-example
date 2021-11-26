@@ -24,7 +24,6 @@ jobs:
         with:
           name: test-results
           path: | 
-            test-output
-            SnapShot
+            SnapShots
             
             
