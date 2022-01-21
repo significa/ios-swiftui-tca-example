@@ -21,7 +21,8 @@ platform :ios do
     scan(
       project: "PokemonCards.xcodeproj",
       devices: ["iPhone 13"],
-      scheme: "Staging"
+      scheme: "Staging",
+      only_testing: "PokemonCardsTests"
     )
   end
 
@@ -31,8 +32,7 @@ platform :ios do
       project: "PokemonCards.xcodeproj",
       devices: ["iPhone 13"],
       scheme: "Production",
-      output_directory: "test-output",
-      include_simulator_logs: true
+      only_testing: "PokemonCardsTests"
     )
   end
 end

@@ -128,7 +128,6 @@ let cardsReducer =
         )
 
       case .cardsResponse(.failure(let error)):
-        print(error)
         return .concatenate(
           .init(value: .loadingActive(false)),
           .init(value: .loadingPageActive(false))

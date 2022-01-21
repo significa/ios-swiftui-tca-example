@@ -40,22 +40,16 @@ class PokemonCardsSnapshotTests: XCTestCase {
     let vc = UIHostingController(rootView: mainView)
     vc.view.frame = UIScreen.main.bounds
 
-    isRecording = true
+//    isRecording = true
 
     ViewStore(mainStore.scope(state: { $0.cardsState })).send(.cards(.onAppear))
-    wait(1)
-    assertSnapshot(
-      matching: vc,
-      as: .image(drawHierarchyInKeyWindow: true)
-    )
+    wait(0.5)
+    assertSnapshot(matching: vc, as: .windowedImage)
 
     ViewStore(mainStore).send(.selectedTabChange(.favorites))
 
-    wait(1)
-    assertSnapshot(
-      matching: vc,
-      as: .image(drawHierarchyInKeyWindow: true)
-    )
+    wait(0.5)
+    assertSnapshot(matching: vc, as: .windowedImage)
   }
 
   /// NavigationLink has some problems when using a binding to activate the navigation, using this simple test to the view only
@@ -76,13 +70,10 @@ class PokemonCardsSnapshotTests: XCTestCase {
     let vc = UIHostingController(rootView: cardListView)
     vc.view.frame = UIScreen.main.bounds
 
-    isRecording = true
+//    isRecording = true
 
-    wait(1)
-    assertSnapshot(
-      matching: vc,
-      as: .image(drawHierarchyInKeyWindow: true)
-    )
+    wait(0.5)
+    assertSnapshot(matching: vc, as: .windowedImage)
   }
 
   // MARK: HELPER
@@ -106,5 +97,28 @@ class PokemonCardsSnapshotTests: XCTestCase {
       expectation.fulfill()
     }
     wait(for: [expectation], timeout: seconds * 2)
+  }
+}
+
+/**
+ # Taken from
+ https://www.pointfree.co/episodes/ep86-swiftui-snapshot-testing
+ */
+extension Snapshotting where Value: UIViewController, Format == UIImage {
+  static var windowedImage: Snapshotting {
+    return Snapshotting<UIImage, UIImage>.image.asyncPullback { vc in
+      Async<UIImage> { callback in
+        UIView.setAnimationsEnabled(false)
+        let window = UIApplication.shared.windows.first!
+        window.rootViewController = vc
+        DispatchQueue.main.async {
+          let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+            window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+          }
+          callback(image)
+          UIView.setAnimationsEnabled(true)
+        }
+      }
+    }
   }
 }
