@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v1
@@ -15,15 +15,3 @@ jobs:
         run: |
           fastlane test_production
           
-      - name: Debugging with ssh
-        uses: lhotari/action-upterm@v1
-          
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: test-results
-          path: | 
-            SnapShots
-            
-            
