@@ -16,7 +16,7 @@ struct CardItemView: View {
   var body: some View {
     ZStack(alignment: .topTrailing) {
       VStack(alignment: .leading, spacing: 4) {
-        KFImage(card.imageURL)
+        KFImage(card.images.smallURL)
           .placeholder {
             ActivityIndicator(
               style: .large,

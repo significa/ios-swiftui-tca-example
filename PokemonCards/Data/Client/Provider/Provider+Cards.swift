@@ -18,6 +18,6 @@ extension Provider {
     var request = URLRequest(url: Router.cardsPage(number: number, size: size).url!)
     request.httpMethod = "GET"
 
-    return requestPublisher(request)
+    return requestAuthorizedPublisher(request)
   }
 }

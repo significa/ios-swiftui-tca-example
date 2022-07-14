@@ -19,6 +19,14 @@ class Provider {
       .flatMap { self.requestDecoder(data: $0.data) }
       .eraseToAnyPublisher()
   }
+
+  func requestAuthorizedPublisher<T: Codable>(_ request: URLRequest) -> AnyPublisher<T, ProviderError> {
+    var request = request
+    let apiKey = Environment.apiKey
+    request.setValue(apiKey, forHTTPHeaderField: "X-Api-Key")
+
+    return requestPublisher(request)
+  }
 }
 
 // MARK: - Encode/Decode Requests

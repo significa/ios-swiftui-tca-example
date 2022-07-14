@@ -61,7 +61,7 @@ let favoritesReducer =
 
       case .favoritesResponse(.success(let favorites)):
         state.cards = .init(
-          favorites.map {
+          uniqueElements: favorites.map {
             CardDetailState(
               id: environment.uuid(),
               card: $0

@@ -20,7 +20,7 @@ extension Provider {
     do {
       favorites = try context.fetch(FavoriteCard.fetchRequest())
     } catch {
-      debugPrint("error retrieving vehicles: \(error)")
+      debugPrint("error retrieving cards: \(error)")
     }
 
     return favorites

@@ -11,7 +11,7 @@ import ComposableArchitecture
 import XCTest
 
 class PokemonCardsTests: XCTestCase {
-  static let scheduler = DispatchQueue.testScheduler
+  static let scheduler = DispatchQueue.test
 
   struct TestError: Error {}
   let error: ProviderError = .network(error: TestError())
@@ -53,7 +53,7 @@ class PokemonCardsTests: XCTestCase {
 
       .do { PokemonCardsTests.scheduler.advance() },
       .receive(.cardsResponse(.success(Cards.mock))) {
-        $0.cards = .init(self.mockStateCards)
+        $0.cards = .init(uniqueElements: self.mockStateCards)
       },
 
       .receive(.loadingActive(false)) {
@@ -172,7 +172,7 @@ class PokemonCardsTests: XCTestCase {
 
       .do { PokemonCardsTests.scheduler.advance() },
       .receive(.favoritesResponse(.success(Cards.mock.cards))) {
-        $0.cards = .init(self.mockStateCards)
+        $0.cards = .init(uniqueElements: self.mockStateCards)
       }
     )
   }

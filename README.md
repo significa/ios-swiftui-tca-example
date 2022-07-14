@@ -1,5 +1,7 @@
 # PokemonCards - SwiftUI + Composable Architecture Example 
 
+This repository has a small example using the [swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture) and the [Pokemon TGC API](https://pokemontcg.io). This also inspired [this](https://github.com/pointfreeco/swift-composable-architecture) Coletiv Blog post 
+
 ## 🚧 Dependencies
 
 - [swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture) (`~> 0.9.0`)
@@ -14,3 +16,4 @@
 2. Install [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) pre-commit hook following [this](https://github.com/nicklockwood/SwiftFormat#git-pre-commit-hook)
     - If you are using the SourceTree client please also follow [this link](https://github.com/typicode/husky/issues/390#issuecomment-577008221)
 3. Use the `.xcodeproj` file to open the Xcode project
+4. Go to the `.xconfig` files under `PokemonCards/Resources/Configs` and insert your API Key on `API_KEY` var. You can get yours from the [Pokemon TGC](https://dev.pokemontcg.io/) website.
