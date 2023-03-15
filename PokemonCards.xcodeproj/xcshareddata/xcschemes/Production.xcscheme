@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "10E404A425706D6900B1FA1C"
+               BlueprintIdentifier = "1009589629C1DD9C0029B538"
                BuildableName = "PokemonCardsTests.xctest"
                BlueprintName = "PokemonCardsTests"
                ReferencedContainer = "container:PokemonCards.xcodeproj">

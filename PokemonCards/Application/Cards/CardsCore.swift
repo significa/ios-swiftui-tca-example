@@ -7,6 +7,7 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 struct CardsState: Equatable {
   var cards = IdentifiedArrayOf<CardDetailState>()
@@ -55,7 +56,7 @@ struct CardsEnvironment {
 // MARK: - Reducer
 
 let cardsReducer =
-  Reducer<CardsState, CardsAction, CardsEnvironment>.combine(
+  AnyReducer<CardsState, CardsAction, CardsEnvironment>.combine(
     cardDetailReducer.forEach(
       state: \.cards,
       action: /CardsAction.card(id:action:),
@@ -72,7 +73,9 @@ let cardsReducer =
 
       switch action {
       case .onAppear:
-        guard state.cards.isEmpty else { return .init(value: .retrieveFavorites) }
+        guard
+            state.cards.isEmpty
+          else { return .init(value: .retrieveFavorites) }
         return .init(value: .retrieve)
 
       case .retrieve:
@@ -148,7 +151,7 @@ let cardsReducer =
       case .card(id: _, action: .onDisappear):
         return .init(value: .retrieveFavorites)
 
-      case .card(id: _, action: _):
+      case .card:
         return .none
 
       case .onDisappear:

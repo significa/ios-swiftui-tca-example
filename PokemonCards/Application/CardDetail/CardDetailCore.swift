@@ -7,6 +7,7 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 struct CardDetailState: Equatable, Identifiable {
   let id: UUID
@@ -33,7 +34,7 @@ struct CardDetailEnvironment {
 // MARK: - Reducer
 
 let cardDetailReducer =
-  Reducer<CardDetailState, CardDetailAction, CardDetailEnvironment> { state, action, environment in
+  AnyReducer<CardDetailState, CardDetailAction, CardDetailEnvironment> { state, action, environment in
 
     struct CardDetailCancelId: Hashable {}
 

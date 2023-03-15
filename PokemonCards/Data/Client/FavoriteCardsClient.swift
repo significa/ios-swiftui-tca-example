@@ -9,9 +9,9 @@
 import ComposableArchitecture
 
 struct FavoriteCardsClient {
-  var all: () -> Effect<[Card], Never>
-  var add: (_ card: Card) -> Effect<[Card], Never>
-  var remove: (_ card: Card) -> Effect<[Card], Never>
+  var all: () -> EffectTask<[Card]>
+  var add: (_ card: Card) -> EffectTask<[Card]>
+  var remove: (_ card: Card) -> EffectTask<[Card]>
 }
 
 // MARK: - Live
@@ -37,13 +37,13 @@ extension FavoriteCardsClient {
 
 extension FavoriteCardsClient {
   static func mock(
-    all: @escaping () -> Effect<[Card], Never> = {
+    all: @escaping () -> EffectTask<[Card]> = {
       fatalError("Unmocked")
     },
-    add: @escaping (Card) -> Effect<[Card], Never> = { _ in
+    add: @escaping (Card) -> EffectTask<[Card]> = { _ in
       fatalError("Unmocked")
     },
-    remove: @escaping (Card) -> Effect<[Card], Never> = { _ in
+    remove: @escaping (Card) -> EffectTask<[Card]> = { _ in
       fatalError("Unmocked")
     }
   ) -> Self {
@@ -55,13 +55,13 @@ extension FavoriteCardsClient {
   }
 
   static func mockPreview(
-    all: @escaping () -> Effect<[Card], Never> = {
+    all: @escaping () -> EffectTask<[Card]> = {
       .init(value: [Card.mock1])
     },
-    add: @escaping (Card) -> Effect<[Card], Never> = { _ in
+    add: @escaping (Card) -> EffectTask<[Card]> = { _ in
       .init(value: [Card.mock2])
     },
-    remove: @escaping (Card) -> Effect<[Card], Never> = { _ in
+    remove: @escaping (Card) -> EffectTask<[Card]> = { _ in
       .init(value: [])
     }
   ) -> Self {

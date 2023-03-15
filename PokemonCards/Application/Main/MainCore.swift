@@ -7,6 +7,7 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 struct MainState: Equatable {
   var cardsState = CardsState()
@@ -36,7 +37,7 @@ struct MainEnvironment {
 
 // MARK: - Reducer
 
-let mainReducer: Reducer<MainState, MainAction, MainEnvironment> = .combine(
+let mainReducer: AnyReducer<MainState, MainAction, MainEnvironment> = .combine(
   cardsReducer.pullback(
     state: \MainState.cardsState,
     action: /MainAction.cards,
@@ -64,7 +65,8 @@ let mainReducer: Reducer<MainState, MainAction, MainEnvironment> = .combine(
 
     switch action {
     // Update favorites on Cards State
-    case .cards(.card(id: _, action: .toggleFavoriteResponse(.success(let favorites)))):
+    case .cards(
+        .card(id: _, action: .toggleFavoriteResponse(.success(let favorites)))):
       state.favoritesState.cards = .init(
         uniqueElements: favorites.map {
           CardDetailState(
@@ -79,7 +81,8 @@ let mainReducer: Reducer<MainState, MainAction, MainEnvironment> = .combine(
       return .none
 
     // Update favorites on Favorites State
-    case .favorites(.card(id: _, action: .toggleFavoriteResponse(.success(let favorites)))):
+    case .favorites(
+        .card(id: _, action: .toggleFavoriteResponse(.success(let favorites)))):
       state.cardsState.favorites = favorites
       return .none
 

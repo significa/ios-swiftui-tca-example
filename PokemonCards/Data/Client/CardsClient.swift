@@ -9,7 +9,7 @@
 import ComposableArchitecture
 
 struct CardsClient {
-  var page: (_ number: Int, _ size: Int) -> Effect<Cards, ProviderError>
+  var page: (_ number: Int, _ size: Int) -> EffectPublisher<Cards, ProviderError>
 }
 
 // MARK: - Live
@@ -28,7 +28,7 @@ extension CardsClient {
 
 extension CardsClient {
   static func mock(
-    all: @escaping (Int, Int) -> Effect<Cards, ProviderError> = { _, _ in
+    all: @escaping (Int, Int) -> EffectPublisher<Cards, ProviderError> = { _, _ in
       fatalError("Unmocked")
     }
   ) -> Self {
@@ -38,7 +38,7 @@ extension CardsClient {
   }
 
   static func mockPreview(
-    all: @escaping (Int, Int) -> Effect<Cards, ProviderError> = { _, _ in
+    all: @escaping (Int, Int) -> EffectPublisher<Cards, ProviderError> = { _, _ in
       .init(value: Cards.mock)
     }
   ) -> Self {
