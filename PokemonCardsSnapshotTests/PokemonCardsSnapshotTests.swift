@@ -36,7 +36,7 @@ class PokemonCardsSnapshotTests: XCTestCase {
       )
     )
 
-    let mainView = MainView(store: mainStore)
+    let mainView = MainView(store: mainStore).environment(\.locale, .init(identifier: "en"))
     let vc = UIHostingController(rootView: mainView)
     vc.view.frame = UIScreen.main.bounds
 

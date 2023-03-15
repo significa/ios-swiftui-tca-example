@@ -10,7 +10,7 @@ import ComposableArchitecture
 import Foundation
 
 extension Provider {
-  func getFavorites() -> Effect<[Card], Never> {
+  func getFavorites() -> EffectTask<[Card]> {
     let cards = getFavorites().map { Card(with: $0) }
     return .init(value: cards)
   }
@@ -26,7 +26,7 @@ extension Provider {
     return favorites
   }
 
-  func addFavorite(_ card: Card) -> Effect<[Card], Never> {
+  func addFavorite(_ card: Card) -> EffectTask<[Card]> {
     guard !hasFavorite(with: card) else { return getFavorites() }
 
     _ = FavoriteCard.instance(from: card, with: context)
@@ -35,7 +35,7 @@ extension Provider {
     return getFavorites()
   }
 
-  func removeFavorite(_ card: Card) -> Effect<[Card], Never> {
+  func removeFavorite(_ card: Card) -> EffectTask<[Card]> {
     guard
       let favoriteId = getFavorites().filter({ $0.id == card.id }).first?.objectID,
       let favoriteCard = context.object(with: favoriteId) as? FavoriteCard
